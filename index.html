@@ -1,42 +1,226 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>GS TONES</title>
-  <style>
-    body{font-family:Arial,Helvetica,sans-serif;max-width:900px;margin:40px auto;padding:0 16px;line-height:1.5}
-    .btn{display:inline-block;padding:12px 16px;border:1px solid #111;text-decoration:none;color:#111;border-radius:10px}
-    .hero{margin:20px 0 30px}
-    .muted{color:#555}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seu Produto - Tone Pack</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS: O Estilo da Página --- */
+        :root {
+            --bg-color: #0a0a0a;
+            --card-bg: #1e1e1e;
+            --text-color: #ffffff;
+            --accent-green: #00d26a; /* O verde do botão */
+            --accent-hover: #00b058;
+            --gray-text: #a0a0a0;
+            --border-radius: 8px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Navbar Simples */
+        header {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo { font-weight: 900; font-size: 1.5rem; letter-spacing: -1px; }
+        .logo span { color: var(--accent-green); }
+
+        /* Container Principal */
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 5%;
+        }
+
+        .product-container {
+            display: flex;
+            max-width: 1200px;
+            width: 100%;
+            gap: 60px;
+            align-items: center;
+        }
+
+        /* Lado da Imagem (Esquerda) */
+        .product-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        .product-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5); /* Sombra estilo 3D */
+            transform: rotate(-2deg); /* Leve inclinação estilosa */
+            transition: transform 0.3s ease;
+        }
+        .product-image img:hover { transform: rotate(0deg) scale(1.02); }
+
+        /* Lado do Texto (Direita) */
+        .product-info { flex: 1; }
+
+        .tags { display: flex; gap: 10px; margin-bottom: 20px; }
+        .tag {
+            background: #333;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .tag.promo { background: #ff4757; color: white; }
+
+        h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+
+        .description {
+            color: var(--gray-text);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        /* Caixa de Preço */
+        .price-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+        }
+
+        .price-row { display: flex; align-items: baseline; gap: 15px; margin-bottom: 10px; }
+        .current-price { color: var(--accent-green); font-size: 2.5rem; font-weight: 800; }
+        .old-price { text-decoration: line-through; color: var(--gray-text); font-size: 1.2rem; }
+        .discount-badge { background: rgba(0, 210, 106, 0.2); color: var(--accent-green); padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 0.9rem; }
+        
+        .savings { color: #ffd700; font-size: 0.9rem; display: flex; align-items: center; gap: 5px; }
+
+        /* Botões */
+        .buttons { display: flex; gap: 15px; margin-top: 25px; }
+        
+        .btn {
+            flex: 1;
+            padding: 18px;
+            border-radius: var(--border-radius);
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: 0.3s;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Botão Kiwify (Verde) */
+        .btn-primary {
+            background-color: var(--accent-green);
+            color: #000;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 210, 106, 0.2);
+        }
+
+        /* Botão Detalhes (Contorno) */
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #333;
+            color: white;
+        }
+        .btn-outline:hover { border-color: white; }
+
+        /* Badges de Confiança */
+        .trust-badges {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            color: var(--gray-text);
+            font-size: 0.85rem;
+        }
+        .trust-item { display: flex; align-items: center; gap: 5px; }
+
+        /* Responsividade (Celular) */
+        @media (max-width: 768px) {
+            .product-container { flex-direction: column; gap: 30px; }
+            h1 { font-size: 2.5rem; }
+            .buttons { flex-direction: column; }
+            .product-image img { transform: none; max-width: 80%; }
+        }
+    </style>
 </head>
 <body>
-  <h1>GS TONES</h1>
-  <p class="muted">Guia prático de IRs + pack Metallic Gold Tones para timbre profissional em pedaleiras e palco.</p>
 
-  <div class="hero">
-    <a class="btn" href="COLE_AQUI_SEU_LINK_DA_KIWIFY">Comprar agora</a>
-  </div>
+    <header>
+        <div class="logo">DABI<span>SHOP</span></div> </header>
 
-  <h2>O que você vai aprender</h2>
-  <ul>
-    <li>O que são IRs e como usar corretamente</li>
-    <li>Como configurar o pack e escolher as ERAs</li>
-    <li>Conexões de palco: PA/FRFR/Return valvulado</li>
-    <li>Quando desligar IR usando gabinete real</li>
-  </ul>
+    <main>
+        <div class="product-container">
+            <div class="product-image">
+                <img src="https://via.placeholder.com/500x600/333/00d26a?text=Sua+Imagem+Aqui" alt="Imagem do Produto">
+            </div>
 
-  <h2>ERAs do pack</h2>
-  <ul>
-    <li>The Kill Era (1983)</li>
-    <li>The Lightning Era (1984)</li>
-    <li>The Master Era (1986)</li>
-    <li>The Justice Era (1988)</li>
-    <li>The Black Era (1991)</li>
-    <li>Thrash Titans (BONUS)</li>
-  </ul>
+            <div class="product-info">
+                <div class="tags">
+                    <span class="tag">AMPLITUBE 5</span>
+                    <span class="tag promo">⚡ PROMOÇÃO</span>
+                </div>
 
-  <p class="muted">© GS TONES</p>
+                <h1>Death - The Sound of Perseverance</h1>
+                <p class="description">Timbre inspirado no icônico álbum da banda Death. Pack completo com presets ajustados profissionalmente.</p>
+
+                <div class="price-card">
+                    <div class="price-row">
+                        <span class="current-price">R$ 19,90</span>
+                        <span class="old-price">R$ 40,00</span>
+                        <span class="discount-badge">50% OFF</span>
+                    </div>
+                    <div class="savings">
+                        💰 Economize R$ 20,10
+                    </div>
+
+                    <div class="buttons">
+                        <a href="LINK_DO_SEU_CHECKOUT_KIWIFY" class="btn btn-primary">
+                            🚀 Comprar Agora
+                        </a>
+                        <a href="#detalhes" class="btn btn-outline">
+                            Ver Detalhes
+                        </a>
+                    </div>
+
+                    <div class="trust-badges">
+                        <span class="trust-item">🔒 Seguro</span>
+                        <span class="trust-item">⚡ Imediato</span>
+                        <span class="trust-item">🥇 Melhor Preço</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
 </body>
 </html>
