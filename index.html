@@ -1,226 +1,331 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seu Produto - Tone Pack</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
-    
-    <style>
-        /* --- CSS: O Estilo da Página --- */
-        :root {
-            --bg-color: #0a0a0a;
-            --card-bg: #1e1e1e;
-            --text-color: #ffffff;
-            --accent-green: #00d26a; /* O verde do botão */
-            --accent-hover: #00b058;
-            --gray-text: #a0a0a0;
-            --border-radius: 8px;
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GS TONES | Metallic Gold Tones</title>
+  <meta name="description" content="Guia prático de IRs + pack Metallic Gold Tones para timbre profissional em pedaleiras e palco." />
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+  <style>
+    :root{
+      --bg:#0b0c0f;
+      --panel:#101218;
+      --panel2:#0f1116;
+      --text:#f2f4f7;
+      --muted:#a7b0bd;
+      --line:rgba(255,255,255,.08);
+      --accent:#12c48b;    /* verde botão */
+      --accent2:#ff4d4d;   /* tag promoção */
+      --chip:#0f2a22;
+      --shadow:0 18px 55px rgba(0,0,0,.6);
+      --radius:18px;
+      --radius2:14px;
+      --max:1150px;
+    }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background: radial-gradient(1200px 600px at 65% 30%, rgba(18,196,139,.15), transparent 60%),
+                  radial-gradient(900px 500px at 35% 40%, rgba(255,77,77,.10), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+    }
 
-        /* Navbar Simples */
-        header {
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo { font-weight: 900; font-size: 1.5rem; letter-spacing: -1px; }
-        .logo span { color: var(--accent-green); }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:26px 18px 70px;}
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:10px 0 18px;
+    }
+    .brand{display:flex; gap:10px; align-items:center;}
+    .brand .mark{
+      width:40px; height:40px; border-radius:12px;
+      background:linear-gradient(135deg, rgba(18,196,139,.95), rgba(255,77,77,.65));
+      box-shadow: var(--shadow);
+    }
+    .brand .name{font-weight:800; letter-spacing:.4px}
+    .nav{display:flex; gap:18px; font-weight:600; color:var(--muted)}
+    .nav a:hover{color:var(--text)}
 
-        /* Container Principal */
-        main {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 5%;
-        }
+    .frame{
+      position:relative;
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      border-radius:22px;
+      padding:26px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      min-height:560px;
+    }
 
-        .product-container {
-            display: flex;
-            max-width: 1200px;
-            width: 100%;
-            gap: 60px;
-            align-items: center;
-        }
+    .hero{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:26px;
+      align-items:center;
+    }
 
-        /* Lado da Imagem (Esquerda) */
-        .product-image {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-        }
-        .product-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: var(--border-radius);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5); /* Sombra estilo 3D */
-            transform: rotate(-2deg); /* Leve inclinação estilosa */
-            transition: transform 0.3s ease;
-        }
-        .product-image img:hover { transform: rotate(0deg) scale(1.02); }
+    .product{
+      display:flex; align-items:center; justify-content:center;
+      padding:8px;
+    }
+    .product img{
+      width:min(460px, 100%);
+      height:auto;
+      filter: drop-shadow(0 22px 45px rgba(0,0,0,.75));
+      border-radius:16px;
+    }
 
-        /* Lado do Texto (Direita) */
-        .product-info { flex: 1; }
+    .meta{padding:6px 8px;}
+    .chips{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:14px;}
+    .chip{
+      font-size:12px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      font-weight:700;
+      letter-spacing:.3px;
+    }
+    .chip.green{background: rgba(18,196,139,.10); border-color: rgba(18,196,139,.30);}
+    .chip.red{background: rgba(255,77,77,.12); border-color: rgba(255,77,77,.35);}
 
-        .tags { display: flex; gap: 10px; margin-bottom: 20px; }
-        .tag {
-            background: #333;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-        .tag.promo { background: #ff4757; color: white; }
+    h1{
+      margin:0 0 10px;
+      font-size: clamp(34px, 4.2vw, 54px);
+      line-height:1.05;
+      letter-spacing:-.8px;
+    }
+    .sub{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:16px;
+      max-width:52ch;
+    }
 
-        h1 {
-            font-size: 3.5rem;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            font-weight: 900;
-        }
+    .priceCard{
+      border:1px solid rgba(18,196,139,.35);
+      background: linear-gradient(180deg, rgba(18,196,139,.10), rgba(18,196,139,.04));
+      border-radius: var(--radius);
+      padding:16px 16px 14px;
+      margin: 18px 0 16px;
+    }
+    .priceRow{
+      display:flex; align-items:baseline; gap:12px; flex-wrap:wrap;
+    }
+    .price{
+      font-size:34px; font-weight:900; letter-spacing:-.6px;
+    }
+    .old{
+      color: rgba(242,244,247,.45);
+      text-decoration: line-through;
+      font-weight:700;
+    }
+    .off{
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      background: rgba(18,196,139,.22);
+      border:1px solid rgba(18,196,139,.35);
+      font-weight:900;
+    }
+    .save{
+      margin-top:8px;
+      color: rgba(242,244,247,.75);
+      font-size:13px;
+      font-weight:650;
+    }
 
-        .description {
-            color: var(--gray-text);
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-        }
+    .actions{
+      display:flex; gap:14px; flex-wrap:wrap;
+      margin: 14px 0 8px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:14px 18px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      font-weight:900;
+      letter-spacing:.2px;
+      min-width: 210px;
+      cursor:pointer;
+      user-select:none;
+    }
+    .btn.primary{
+      background: linear-gradient(180deg, rgba(18,196,139,.95), rgba(18,196,139,.75));
+      border-color: rgba(18,196,139,.45);
+      color:#06110d;
+    }
+    .btn.primary:hover{filter:brightness(1.03)}
+    .btn.ghost:hover{background: rgba(255,255,255,.07)}
 
-        /* Caixa de Preço */
-        .price-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 25px;
-            border-radius: var(--border-radius);
-            margin-bottom: 30px;
-        }
+    .trust{
+      display:flex; gap:14px; flex-wrap:wrap;
+      margin-top:10px;
+      color: rgba(242,244,247,.75);
+      font-weight:650;
+      font-size:13px;
+      align-items:center;
+    }
+    .dot{width:6px; height:6px; border-radius:99px; background: rgba(18,196,139,.8); display:inline-block; margin-right:8px;}
 
-        .price-row { display: flex; align-items: baseline; gap: 15px; margin-bottom: 10px; }
-        .current-price { color: var(--accent-green); font-size: 2.5rem; font-weight: 800; }
-        .old-price { text-decoration: line-through; color: var(--gray-text); font-size: 1.2rem; }
-        .discount-badge { background: rgba(0, 210, 106, 0.2); color: var(--accent-green); padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 0.9rem; }
-        
-        .savings { color: #ffd700; font-size: 0.9rem; display: flex; align-items: center; gap: 5px; }
+    .sections{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:16px;
+      margin-top:18px;
+    }
+    .card{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius: var(--radius2);
+      padding:14px 14px;
+    }
+    .card h3{margin:0 0 8px; font-size:14px; letter-spacing:.2px}
+    .card ul{margin:0; padding-left:18px; color: rgba(242,244,247,.78)}
+    .card li{margin:6px 0}
 
-        /* Botões */
-        .buttons { display: flex; gap: 15px; margin-top: 25px; }
-        
-        .btn {
-            flex: 1;
-            padding: 18px;
-            border-radius: var(--border-radius);
-            font-weight: 700;
-            text-align: center;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: 0.3s;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-        }
+    /* setas (estilo carrossel) */
+    .arrow{
+      position:absolute;
+      top:50%;
+      transform: translateY(-50%);
+      width:44px; height:44px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.30);
+      display:flex; align-items:center; justify-content:center;
+      color: rgba(242,244,247,.85);
+      cursor:pointer;
+      backdrop-filter: blur(8px);
+    }
+    .arrow:hover{background: rgba(0,0,0,.45)}
+    .arrow.left{left:14px}
+    .arrow.right{right:14px}
 
-        /* Botão Kiwify (Verde) */
-        .btn-primary {
-            background-color: var(--accent-green);
-            color: #000;
-            border: none;
-        }
-        .btn-primary:hover {
-            background-color: var(--accent-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0, 210, 106, 0.2);
-        }
+    footer{
+      margin-top:22px;
+      color: rgba(242,244,247,.55);
+      font-size:12px;
+      text-align:center;
+    }
 
-        /* Botão Detalhes (Contorno) */
-        .btn-outline {
-            background: transparent;
-            border: 2px solid #333;
-            color: white;
-        }
-        .btn-outline:hover { border-color: white; }
-
-        /* Badges de Confiança */
-        .trust-badges {
-            margin-top: 20px;
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            color: var(--gray-text);
-            font-size: 0.85rem;
-        }
-        .trust-item { display: flex; align-items: center; gap: 5px; }
-
-        /* Responsividade (Celular) */
-        @media (max-width: 768px) {
-            .product-container { flex-direction: column; gap: 30px; }
-            h1 { font-size: 2.5rem; }
-            .buttons { flex-direction: column; }
-            .product-image img { transform: none; max-width: 80%; }
-        }
-    </style>
+    /* Responsivo */
+    @media (max-width: 920px){
+      .hero{grid-template-columns: 1fr; }
+      .frame{min-height:auto}
+      .actions .btn{min-width: 1px; flex:1}
+      .sections{grid-template-columns:1fr}
+      .arrow{display:none}
+    }
+  </style>
 </head>
+
 <body>
+  <div class="wrap">
 
-    <header>
-        <div class="logo">DABI<span>SHOP</span></div> </header>
+    <div class="topbar">
+      <div class="brand">
+        <div class="mark" aria-hidden="true"></div>
+        <div class="name">GS shop</div> <!-- (EDITAR) -->
+      </div>
+      <div class="nav">
+        <a href="#home">Home</a>
+        <a href="#produto">Produtos</a>
+      </div>
+    </div>
 
-    <main>
-        <div class="product-container">
-            <div class="product-image">
-                <img src="https://via.placeholder.com/500x600/333/00d26a?text=Sua+Imagem+Aqui" alt="Imagem do Produto">
-            </div>
+    <main class="frame" id="home">
 
-            <div class="product-info">
-                <div class="tags">
-                    <span class="tag">AMPLITUBE 5</span>
-                    <span class="tag promo">⚡ PROMOÇÃO</span>
-                </div>
+      <!-- setas só visuais (se quiser virar carrossel de verdade eu te passo JS) -->
+      <div class="arrow left" title="Anterior">‹</div>
+      <div class="arrow right" title="Próximo">›</div>
 
-                <h1>Death - The Sound of Perseverance</h1>
-                <p class="description">Timbre inspirado no icônico álbum da banda Death. Pack completo com presets ajustados profissionalmente.</p>
+      <section class="hero" id="produto">
 
-                <div class="price-card">
-                    <div class="price-row">
-                        <span class="current-price">R$ 19,90</span>
-                        <span class="old-price">R$ 40,00</span>
-                        <span class="discount-badge">50% OFF</span>
-                    </div>
-                    <div class="savings">
-                        💰 Economize R$ 20,10
-                    </div>
-
-                    <div class="buttons">
-                        <a href="LINK_DO_SEU_CHECKOUT_KIWIFY" class="btn btn-primary">
-                            🚀 Comprar Agora
-                        </a>
-                        <a href="#detalhes" class="btn btn-outline">
-                            Ver Detalhes
-                        </a>
-                    </div>
-
-                    <div class="trust-badges">
-                        <span class="trust-item">🔒 Seguro</span>
-                        <span class="trust-item">⚡ Imediato</span>
-                        <span class="trust-item">🥇 Melhor Preço</span>
-                    </div>
-                </div>
-            </div>
+        <div class="product">
+          <!-- (EDITAR) troque o arquivo para sua imagem -->
+          <img src="assets/product.png" alt="GS TONES - Metallic Gold Tones" />
         </div>
+
+        <div class="meta">
+          <div class="chips">
+            <span class="chip green">IRs + GUIA</span>
+            <span class="chip">Pedaleiras</span>
+            <span class="chip">Plugins</span>
+            <span class="chip red">PROMOÇÃO</span> <!-- (EDITAR) se não quiser, remova -->
+          </div>
+
+          <!-- (EDITAR) nome do produto -->
+          <h1>GS TONES – Metallic Gold Tones</h1>
+
+          <!-- (EDITAR) subtítulo -->
+          <p class="sub">
+            Guia prático de Impulse Responses + pack organizado por ERAs para timbre profissional em pedaleiras,
+            plugins e palco (PA, FRFR, Return valvulado).
+          </p>
+
+          <!-- (EDITAR) preços -->
+          <div class="priceCard">
+            <div class="priceRow">
+              <div class="price">R$ 49,90</div>
+              <div class="old">R$ 99,90</div>
+              <div class="off">50% OFF</div>
+            </div>
+            <div class="save">Economize R$ 50,00 • Acesso imediato • Arquivos digitais</div>
+          </div>
+
+          <!-- (EDITAR) botões -->
+          <div class="actions">
+            <a class="btn primary" href="COLE_AQUI_SEU_LINK_DA_KIWIFY" target="_blank" rel="noopener">
+              COMPRAR AGORA
+            </a>
+            <a class="btn ghost" href="#detalhes">
+              Ver Detalhes
+            </a>
+          </div>
+
+          <div class="trust">
+            <span><span class="dot"></span>Seguro</span>
+            <span><span class="dot"></span>Imediato</span>
+            <span><span class="dot"></span>Melhor custo-benefício</span>
+          </div>
+
+          <div class="sections" id="detalhes">
+            <div class="card">
+              <h3>O que você aprende</h3>
+              <ul>
+                <li>O que é IR e como usar do jeito certo</li>
+                <li>Configuração de pedaleiras e plugins</li>
+                <li>Conexões para palco (PA/FRFR/Return)</li>
+                <li>Quando desligar IR em gabinete real</li>
+              </ul>
+            </div>
+
+            <div class="card">
+              <h3>ERAs do pack (ZIP)</h3>
+              <ul>
+                <li>The Kill Era (1983)</li>
+                <li>The Lightning Era (1984)</li>
+                <li>The Master Era (1986)</li>
+                <li>The Justice Era (1988)</li>
+                <li>The Black Era (1991)</li>
+                <li>Thrash Titans (BONUS)</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <footer>© GS TONES • Página oficial do produto</footer>
     </main>
 
+  </div>
 </body>
 </html>
